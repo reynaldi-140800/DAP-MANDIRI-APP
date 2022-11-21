@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-component-b',
@@ -6,10 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./component-b.component.scss']
 })
 export class ComponentBComponent implements OnInit {
-
-  constructor() { }
+  id: number = 0
+  constructor(
+    private readonly route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe({
+      next:(params) => {
+        // console.log('params:', params['id'])
+        console.log('params:', params['id'])
+        console.log('typeof params: ', typeof params['id'])
+        console.log('typeof this.id:', typeof this.id)
+        
+        this.id = params['id'] // re-assign
+        const temp = Number(params['id'])
+        console.log('temp:', temp)
+        if (temp){
+          this.id = params['id']
+        }
+      }
+    })
   }
 
 }

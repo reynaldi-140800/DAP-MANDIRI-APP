@@ -27,7 +27,10 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'component-b',
+    // Ketika path dibuat seperti ini maka wajib memberikan variabel
+    // stelah e.g component-b/1111
+    // Karena path variabel bersifat wajib diisi  
+    path: 'component-b/:id',
     component: ComponentBComponent
   },
   {
